@@ -30,3 +30,7 @@ test "map square numbers" {
     try std.testing.expect(mapped[1] == 4);
     try std.testing.expect(mapped[2] == 9);
 }
+
+// test "always fail" {
+//     try std.testing.expect(false);
+// }

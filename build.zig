@@ -39,7 +39,7 @@ pub fn build(b: *std.Build) void {
         // only contains e.g. external object files, you can make this `null`.
         // In this case the main source file is merely a path, however, in more
         // complicated build scripts, this could be a generated file.
-        .root_source_file = b.path("src/root.zig"),
+        .root_source_file = b.path("src/zkit.zig"),
         .target = target,
         .optimize = optimize,
     });
@@ -49,14 +49,8 @@ pub fn build(b: *std.Build) void {
         .name = "zkit",
         .root_module = lib_mod,
     });
-    const zkit_mod = b.addModule("zkit", .{
-        .root_source_file = .{ .cwd_relative = "src/root.zig" },
-        .imports = &.{},
-        .target = target,
-        .optimize = optimize,
-    });
-    lib.root_module.addImport("zkit", zkit_mod);
-    b.default_step.dependOn(&lib.step);
+    // lib.root_module.addImport("zkit", zkit_mod);
+    // b.default_step.dependOn(&lib.step);
 
     // This declares intent for the library to be installed into the standard
     // location when the user invokes the "install" step (the default step when
